@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4958354145008806}
   - component: {fileID: 8195094282116590670}
   - component: {fileID: 3664157343599719316}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Layer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,7 +348,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4082919718712488}
   - component: {fileID: 2569400268100433248}
-  m_Layer: 31
+  m_Layer: 6
   m_Name: DirtPalette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
