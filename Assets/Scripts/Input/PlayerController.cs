@@ -62,7 +62,16 @@ public class PlayerController : MonoBehaviour
         CalculateRayRanges();
         LandingThisFrame = false;
 
-        _colDown = RunEdgeDetection(_raysDown);
+        var groundedCheck = RunEdgeDetection(_raysDown);
+
+        if (_colDown && !groundedCheck) _timeLeftGrounded = Time.time;
+        else if (!_colDown && groundedCheck) {
+            _coyoteUsable = true;
+            LandingThisFrame = true;
+        }
+
+        _colDown = groundedCheck;
+
         _colUp = RunEdgeDetection(_raysUp);
         _colLeft = RunEdgeDetection(_raysLeft);
         _colRight = RunEdgeDetection(_raysRight);
@@ -103,6 +112,7 @@ public class PlayerController : MonoBehaviour
         jumpAction = playerInput.actions["Jump"];
         moveAction = playerInput.actions["Move"];
         fireAction = playerInput.actions["Fire"];
+        Invoke(nameof(Activate), 0.5f);
     }
 
     private void GatherInput() {
@@ -277,8 +287,11 @@ public class PlayerController : MonoBehaviour
     // }
 
     // Update is called once per frame
+    private bool _active;
+    void Activate() => _active = true;
     void Update()
     {
+        if (!_active) return;
         Velocity = (transform.position - _lastPosition) / Time.deltaTime;
         _lastPosition = transform.position;
 
