@@ -251,7 +251,7 @@ public class PlayerController : MonoBehaviour
             _endedJumpEarly = false;
             _coyoteUsable = false;
             _timeLeftGrounded = float.MinValue;
-            JumpingThisFrame = true;    
+            JumpingThisFrame = true;
         }
         else {
             JumpingThisFrame = false;
